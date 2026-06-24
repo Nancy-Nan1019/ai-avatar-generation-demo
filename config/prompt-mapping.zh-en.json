@@ -1,0 +1,351 @@
+{
+  "version": "v2-visual-phrases",
+  "locale": "zh-CN",
+  "description": "Chinese UI labels mapped to visual English prompt phrases for a diffusion image generator.",
+  "categories": [
+    {
+      "id": "style_base",
+      "labelZh": "基础画风",
+      "labelEn": "base style",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "日系萌系", "promptEn": "anime portrait style, cute youthful aesthetic" },
+        { "labelZh": "古风仙侠", "promptEn": "xianxia fantasy illustration, elegant ancient chinese aesthetic" },
+        { "labelZh": "赛博科幻", "promptEn": "cyberpunk character art, futuristic neon sci-fi atmosphere" },
+        { "labelZh": "机甲硬核", "promptEn": "mecha-themed character design, hard-surface sci-fi detail" },
+        { "labelZh": "水墨淡彩", "promptEn": "ink wash illustration, soft watercolor texture, airy composition" },
+        { "labelZh": "校园清新", "promptEn": "fresh school-life illustration, bright youthful atmosphere" },
+        { "labelZh": "热血战斗", "promptEn": "dynamic action anime style, intense battle energy" },
+        { "labelZh": "清冷治愈", "promptEn": "calm healing illustration, cool gentle atmosphere" },
+        { "labelZh": "厚涂写实", "promptEn": "painterly semi-realistic portrait, rich digital brushwork" },
+        { "labelZh": "线稿简约", "promptEn": "clean line-art illustration, minimal refined drawing" }
+      ]
+    },
+    {
+      "id": "style_ip_derivative",
+      "labelZh": "动漫 IP 衍生",
+      "labelEn": "anime ip-inspired style",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "原创风", "promptEn": "original anime character design, distinct visual identity" },
+        { "labelZh": "火影忍者画风", "promptEn": "ninja anime aesthetic, bold cel-shading, energetic action feel" },
+        { "labelZh": "鬼灭之刃质感", "promptEn": "dramatic anime lighting, taisho-era fantasy mood, sharp visual contrast" },
+        { "labelZh": "海贼王手绘风", "promptEn": "adventure anime drawing style, expressive hand-drawn character look" },
+        { "labelZh": "罗小黑战记治愈风", "promptEn": "soft healing animation aesthetic, gentle simplified character charm" }
+      ]
+    },
+    {
+      "id": "style_texture",
+      "labelZh": "细节质感",
+      "labelEn": "texture and detail",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "4K高清", "promptEn": "ultra-detailed rendering, high-resolution finish" },
+        { "labelZh": "发丝清晰", "promptEn": "crisp individual hair strands, delicate hair detail" },
+        { "labelZh": "阴影柔和", "promptEn": "soft natural shadows, smooth tonal transition" },
+        { "labelZh": "锐化聚焦", "promptEn": "sharp focus, clear facial details" },
+        { "labelZh": "低饱和", "promptEn": "muted color palette, restrained saturation" },
+        { "labelZh": "马卡龙色调", "promptEn": "pastel macaron palette, soft sweet colors" },
+        { "labelZh": "霓虹光效", "promptEn": "neon rim lighting, colorful glow accents" }
+      ]
+    },
+    {
+      "id": "appearance_hair",
+      "labelZh": "发型（外貌特征）",
+      "labelEn": "hair style",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "双马尾", "promptEn": "twin-tail hairstyle" },
+        { "labelZh": "高马尾", "promptEn": "high ponytail hairstyle" },
+        { "labelZh": "短发狼尾", "promptEn": "short wolf-cut hairstyle" },
+        { "labelZh": "长卷发", "promptEn": "long wavy hair" },
+        { "labelZh": "呆毛", "promptEn": "playful ahoge hair strand" },
+        { "labelZh": "粉毛", "promptEn": "soft pink hair color" },
+        { "labelZh": "蓝毛", "promptEn": "cool blue hair color" },
+        { "labelZh": "银发（异色发）", "promptEn": "silver-toned hair, striking fantasy hair color" },
+        { "labelZh": "渐变发色", "promptEn": "gradient-dyed hair, blended color transition" }
+      ]
+    },
+    {
+      "id": "appearance_face",
+      "labelZh": "五官（外貌特征）",
+      "labelEn": "facial features",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "大眼睛", "promptEn": "large expressive eyes" },
+        { "labelZh": "异瞳", "promptEn": "heterochromia eyes, mismatched eye colors" },
+        { "labelZh": "浅杏眼", "promptEn": "soft almond-shaped eyes" },
+        { "labelZh": "微笑唇", "promptEn": "gentle smiling lips" },
+        { "labelZh": "脸红娇羞", "promptEn": "soft blush on cheeks, shy expression" },
+        { "labelZh": "清冷眼距", "promptEn": "cool distant gaze, sharp refined eyes" },
+        { "labelZh": "元气挑眉", "promptEn": "playful raised eyebrows, lively expression" }
+      ]
+    },
+    {
+      "id": "appearance_face_detail",
+      "labelZh": "面部细节（外貌特征）",
+      "labelEn": "face details",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "雀斑", "promptEn": "light freckles across the face" },
+        { "labelZh": "泪痣", "promptEn": "small beauty mark under the eye" },
+        { "labelZh": "猫耳", "promptEn": "cat ears accessory, cute animal-ear silhouette" },
+        { "labelZh": "狐耳（兽耳）", "promptEn": "fox ears, fantasy beast-ear detail" },
+        { "labelZh": "恶魔角", "promptEn": "small demon horns, fantasy character accent" },
+        { "labelZh": "口罩遮脸", "promptEn": "face partially covered by a mask" },
+        { "labelZh": "眼镜（圆框）", "promptEn": "round-frame glasses" },
+        { "labelZh": "眼镜（方框）", "promptEn": "square-frame glasses" }
+      ]
+    },
+    {
+      "id": "persona_school_role",
+      "labelZh": "校园身份（人设）",
+      "labelEn": "school persona",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "JK制服女生", "promptEn": "young schoolgirl in japanese-style uniform" },
+        { "labelZh": "校草风男生", "promptEn": "handsome schoolboy with polished campus-idol look" },
+        { "labelZh": "社团达人（动漫社）", "promptEn": "anime club student, expressive fandom energy" },
+        { "labelZh": "社团达人（汉服社）", "promptEn": "hanfu club student, elegant traditional styling" },
+        { "labelZh": "学霸", "promptEn": "top student, neat and intelligent appearance" },
+        { "labelZh": "运动系（篮球）", "promptEn": "athletic student, basketball-player vibe" },
+        { "labelZh": "运动系（足球）", "promptEn": "athletic student, soccer-player vibe" }
+      ]
+    },
+    {
+      "id": "persona_anime_role",
+      "labelZh": "二次元人设",
+      "labelEn": "anime character persona",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "傲娇", "promptEn": "tsundere personality, proud but secretly soft expression" },
+        { "labelZh": "天然呆", "promptEn": "innocent airheaded charm, soft clueless expression" },
+        { "labelZh": "病娇", "promptEn": "yandere character vibe, intense affectionate tension" },
+        { "labelZh": "中二", "promptEn": "dramatic chuunibyou aura, theatrical fantasy attitude" },
+        { "labelZh": "温柔学长", "promptEn": "gentle senior student, calm caring presence" },
+        { "labelZh": "元气少女", "promptEn": "energetic cheerful anime girl" },
+        { "labelZh": "清冷御姐", "promptEn": "cool mature beauty, composed elegant presence" },
+        { "labelZh": "腹黑少年", "promptEn": "scheming young man, subtle mischievous confidence" }
+      ]
+    },
+    {
+      "id": "persona_special",
+      "labelZh": "特殊设定",
+      "labelEn": "special setup",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "情侣头像（双人互动）", "promptEn": "two-person portrait, romantic interaction, matching composition" },
+        { "labelZh": "闺蜜头像（同款不同色）", "promptEn": "matching best-friend avatar set, same design with different color themes" },
+        { "labelZh": "兄弟羁绊风", "promptEn": "strong friendship bond, brotherhood energy, duo portrait" }
+      ]
+    },
+    {
+      "id": "outfit_style",
+      "labelZh": "服装风格",
+      "labelEn": "outfit style",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "JK制服", "promptEn": "japanese school uniform outfit" },
+        { "labelZh": "水手服", "promptEn": "classic sailor-style school uniform" },
+        { "labelZh": "汉服", "promptEn": "flowing hanfu outfit, traditional chinese clothing" },
+        { "labelZh": "Lolita", "promptEn": "layered lolita dress with refined decorative details" },
+        { "labelZh": "校园西装", "promptEn": "tailored school blazer outfit" },
+        { "labelZh": "运动校服", "promptEn": "athletic school sportswear" },
+        { "labelZh": "工装", "promptEn": "structured workwear styling" },
+        { "labelZh": "魔法学院服", "promptEn": "magic academy uniform, fantasy student attire" },
+        { "labelZh": "机甲战衣", "promptEn": "sleek mecha combat suit" }
+      ]
+    },
+    {
+      "id": "outfit_accessories",
+      "labelZh": "配饰细节",
+      "labelEn": "accessories",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "猫耳发带", "promptEn": "cat-ear headband accessory" },
+        { "labelZh": "星星发卡", "promptEn": "star-shaped hair clip" },
+        { "labelZh": "耳机", "promptEn": "stylish over-ear headphones" },
+        { "labelZh": "项链", "promptEn": "delicate necklace detail" },
+        { "labelZh": "书包", "promptEn": "school bag accessory" },
+        { "labelZh": "棒球帽", "promptEn": "casual baseball cap" },
+        { "labelZh": "佩剑", "promptEn": "sheathed sword accessory" },
+        { "labelZh": "魔法杖", "promptEn": "ornate magic wand" },
+        { "labelZh": "围巾手套", "promptEn": "scarf and gloves, seasonal accessory detail" }
+      ]
+    },
+    {
+      "id": "pose_basic",
+      "labelZh": "基础姿态",
+      "labelEn": "basic pose",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "正面视角", "promptEn": "front-facing composition" },
+        { "labelZh": "侧脸", "promptEn": "side-profile composition" },
+        { "labelZh": "半身像", "promptEn": "upper-body portrait framing" },
+        { "labelZh": "全身像", "promptEn": "full-body character composition" },
+        { "labelZh": "坐姿", "promptEn": "natural seated pose" },
+        { "labelZh": "站姿", "promptEn": "relaxed standing pose" },
+        { "labelZh": "低头浅笑", "promptEn": "looking downward with a faint smile" },
+        { "labelZh": "抬头望天", "promptEn": "looking upward toward the sky" }
+      ]
+    },
+    {
+      "id": "pose_interaction",
+      "labelZh": "互动动作",
+      "labelEn": "interaction pose",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "比耶", "promptEn": "peace-sign hand gesture" },
+        { "labelZh": "托腮", "promptEn": "chin resting on hand" },
+        { "labelZh": "挥手", "promptEn": "friendly waving gesture" },
+        { "labelZh": "递情书", "promptEn": "holding out a love letter" },
+        { "labelZh": "背靠背（情侣）", "promptEn": "back-to-back couple pose" },
+        { "labelZh": "并肩走", "promptEn": "walking side by side" },
+        { "labelZh": "摸头杀", "promptEn": "gentle head-pat interaction" },
+        { "labelZh": "对视微笑", "promptEn": "eye contact with a soft smile" }
+      ]
+    },
+    {
+      "id": "pose_atmosphere_action",
+      "labelZh": "氛围动作",
+      "labelEn": "atmospheric action",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "吹樱花", "promptEn": "cherry blossom petals drifting in the wind" },
+        { "labelZh": "戴耳机听歌", "promptEn": "wearing headphones, immersed in music" },
+        { "labelZh": "捧漫画书", "promptEn": "holding a manga book close to the chest" },
+        { "labelZh": "打篮球", "promptEn": "mid-action basketball movement" },
+        { "labelZh": "魔法施法", "promptEn": "casting magic with glowing spell effects" },
+        { "labelZh": "战斗姿势", "promptEn": "dynamic combat-ready stance" }
+      ]
+    },
+    {
+      "id": "scene_school",
+      "labelZh": "校园场景",
+      "labelEn": "school scene",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "樱花树下", "promptEn": "under blooming cherry trees on campus" },
+        { "labelZh": "教室窗边", "promptEn": "beside a classroom window, soft daylight" },
+        { "labelZh": "操场跑道", "promptEn": "on the school running track" },
+        { "labelZh": "图书馆", "promptEn": "inside a quiet school library" },
+        { "labelZh": "放学小路", "promptEn": "on a peaceful after-school path" },
+        { "labelZh": "天台", "promptEn": "on the school rooftop, open sky background" }
+      ]
+    },
+    {
+      "id": "scene_anime",
+      "labelZh": "二次元场景",
+      "labelEn": "fantasy scene",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "星空下", "promptEn": "beneath a luminous starry night sky" },
+        { "labelZh": "海边落日", "promptEn": "seaside at sunset, warm golden light" },
+        { "labelZh": "雨夜公交站", "promptEn": "rainy night bus stop, reflective wet pavement" },
+        { "labelZh": "异世界森林", "promptEn": "fantasy forest with mysterious ambient light" },
+        { "labelZh": "赛博朋克街道", "promptEn": "cyberpunk city street, neon-lit urban backdrop" },
+        { "labelZh": "古风庭院", "promptEn": "traditional chinese courtyard, elegant architectural setting" }
+      ]
+    },
+    {
+      "id": "scene_simple_background",
+      "labelZh": "背景简化",
+      "labelEn": "simple background",
+      "selectionMode": "single",
+      "options": [
+        { "labelZh": "纯色背景（白）", "promptEn": "clean plain white background" },
+        { "labelZh": "纯色背景（粉）", "promptEn": "soft plain pink background" },
+        { "labelZh": "纯色背景（蓝）", "promptEn": "soft plain blue background" },
+        { "labelZh": "渐变背景", "promptEn": "smooth gradient background" },
+        { "labelZh": "模糊光斑", "promptEn": "dreamy bokeh background" },
+        { "labelZh": "留白设计", "promptEn": "minimal negative-space background design" }
+      ]
+    },
+    {
+      "id": "mood_emotion",
+      "labelZh": "情绪表达",
+      "labelEn": "emotional tone",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "元气满满", "promptEn": "bright energetic mood, cheerful expression" },
+        { "labelZh": "温柔治愈", "promptEn": "gentle healing mood, warm soft expression" },
+        { "labelZh": "清冷疏离", "promptEn": "cool distant mood, reserved expression" },
+        { "labelZh": "傲娇炸毛", "promptEn": "slightly annoyed tsundere expression, spiky emotional tension" },
+        { "labelZh": "害羞脸红", "promptEn": "shy blushing mood, bashful expression" },
+        { "labelZh": "热血激昂", "promptEn": "passionate high-energy emotion, intense presence" },
+        { "labelZh": "厌世感", "promptEn": "melancholic detached mood, world-weary expression" }
+      ]
+    },
+    {
+      "id": "mood_palette",
+      "labelZh": "氛围基调",
+      "labelEn": "overall mood and palette",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "甜妹感", "promptEn": "sweet feminine aesthetic, soft charming vibe" },
+        { "labelZh": "盐系", "promptEn": "minimal cool aesthetic, understated clean styling" },
+        { "labelZh": "氛围感", "promptEn": "strong cinematic atmosphere, mood-driven composition" },
+        { "labelZh": "高级夕分", "promptEn": "premium editorial feel, elegant polished composition" },
+        { "labelZh": "甜而不腻", "promptEn": "sweet but refined mood, balanced delicate styling" },
+        { "labelZh": "酷飒拽", "promptEn": "bold stylish confidence, sharp fashionable edge" }
+      ]
+    },
+    {
+      "id": "social_avatar_adaptation",
+      "labelZh": "尺寸适配",
+      "labelEn": "avatar adaptation",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "微信头像", "promptEn": "avatar-friendly composition, centered face for wechat profile" },
+        { "labelZh": "QQ头像", "promptEn": "profile-picture composition, centered facial framing for qq" },
+        { "labelZh": "小红书头像", "promptEn": "clean social-avatar framing for xiaohongshu profile" },
+        { "labelZh": "微博头像", "promptEn": "profile-avatar composition for weibo, clear subject focus" },
+        { "labelZh": "正方形裁剪兼容", "promptEn": "square-crop friendly composition, centered subject" },
+        { "labelZh": "圆形裁剪兼容", "promptEn": "circle-crop friendly framing, face centered in composition" }
+      ]
+    },
+    {
+      "id": "social_special_requirement",
+      "labelZh": "特殊需求",
+      "labelEn": "special requirements",
+      "selectionMode": "multiple",
+      "options": [
+        { "labelZh": "无水印", "promptEn": "clean image with no watermark elements" },
+        { "labelZh": "高清无噪点", "promptEn": "clean high-resolution image, minimal visual noise" },
+        { "labelZh": "不撞款", "promptEn": "distinctive character styling, less generic visual identity" },
+        { "labelZh": "小众设计", "promptEn": "niche aesthetic direction, unconventional visual taste" },
+        { "labelZh": "可商用（用于社团海报）", "promptEn": "clean poster-friendly composition, strong visual readability" }
+      ]
+    }
+  ],
+  "generationDefaults": {
+    "positivePrefix": [
+      "masterpiece",
+      "best quality",
+      "highly detailed"
+    ],
+    "negativePrompt": [
+      "low quality",
+      "blurry",
+      "bad anatomy",
+      "deformed hands",
+      "extra fingers",
+      "poorly drawn face",
+      "asymmetrical eyes",
+      "cropped",
+      "watermark",
+      "text",
+      "jpeg artifacts"
+    ],
+    "modelRecommendation": {
+      "primary": "runwayml/stable-diffusion-v1-5",
+      "secondary": "stabilityai/stable-diffusion-xl-base-1.0"
+    },
+    "inference": {
+      "width": 512,
+      "height": 512,
+      "numInferenceSteps": 20,
+      "guidanceScale": 6
+    }
+  }
+}

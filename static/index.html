@@ -1,53 +1,61 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Diffusion 头像生成台</title>
+    <title>天猫 AI 头像馆</title>
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
     <main class="page">
       <section class="hero-card">
         <div class="hero-copy">
-          <p class="eyebrow">Diffusion Avatar Studio</p>
-          <h1>中文选参，自动拼英文 Prompt，快速生成头像方案</h1>
+          <p class="eyebrow">Tmall AI Avatar Studio</p>
+          <h1>天猫 AI 头像馆</h1>
+          <p class="hero-lead">用中文选择角色视觉标签，系统自动整理头像生成方案。</p>
           <p class="subtitle">
-            这是一套面向演示和落地的最小系统。前端负责中文参数选择，后端负责英文 Prompt
-            拼接和图片生成接口，后续可以直接接本地模型或 Colab GPU。
+            这套页面面向头像定制场景，重点是角色风格、人物特征、社交头像构图和结果预览。用户只需要按步骤完成选择，不需要理解模型参数或提示词细节。
           </p>
           <div class="hero-tags">
-            <span class="hero-tag">中文按钮交互</span>
-            <span class="hero-tag">英文 Prompt 自动组装</span>
-            <span class="hero-tag">支持 Mock / Remote / Diffusers</span>
+            <span class="hero-tag">中文标签选参</span>
+            <span class="hero-tag">头像场景定制</span>
+            <span class="hero-tag">一键生成预览</span>
+          </div>
+          <div class="hero-flow">
+            <span>1 选择标签</span>
+            <span>2 补充描述</span>
+            <span>3 生成头像</span>
           </div>
         </div>
 
         <div class="hero-side">
-          <div class="mini-stat">
+          <div class="mini-stat mini-stat-accent">
             <span class="mini-stat-label">参数分类</span>
             <strong id="categoryCount">0</strong>
+            <p>覆盖风格、外貌、穿搭、动作、场景与头像适配。</p>
           </div>
           <div class="mini-stat">
-            <span class="mini-stat-label">已选选项</span>
+            <span class="mini-stat-label">当前已选</span>
             <strong id="selectedCount">0</strong>
+            <p>实时统计当前组合，方便控制人物设定复杂度。</p>
           </div>
           <div class="mini-stat">
-            <span class="mini-stat-label">当前模式</span>
-            <strong id="heroBackendMode">mock</strong>
+            <span class="mini-stat-label">适用场景</span>
+            <strong>头像定制</strong>
+            <p>优先面向社交头像、校园人设和风格化角色展示。</p>
           </div>
         </div>
       </section>
 
-      <section class="layout">
-        <div class="panel panel-left">
+      <section class="stack-layout">
+        <div class="panel flow-panel">
           <div class="panel-head">
             <div>
               <p class="panel-kicker">Step 1</p>
-              <h2>参数选择</h2>
-              <p class="panel-desc">按中文分类选择风格、外貌、人设、动作和场景，系统会自动映射成英文提示词。</p>
+              <h2>角色视觉标签</h2>
+              <p class="panel-desc">按中文分类选择画风、人设、发型、服装、动作和场景，系统会自动整理成头像生成方案。</p>
             </div>
-            <button id="resetBtn" class="ghost-btn" type="button">重置选择</button>
+            <button id="resetBtn" class="ghost-btn" type="button">清空选择</button>
           </div>
 
           <div class="selection-summary">
@@ -56,80 +64,48 @@
               <strong id="selectedSummaryCount">0</strong>
             </div>
             <div class="summary-card">
-              <span class="summary-label">建议流程</span>
-              <strong>先风格，再角色，再场景</strong>
+              <span class="summary-label">推荐顺序</span>
+              <strong>画风 → 人设 → 外貌 → 场景</strong>
             </div>
           </div>
 
           <div id="categories"></div>
         </div>
 
-        <div class="panel panel-right">
+        <div class="panel flow-panel">
           <div class="panel-head">
             <div>
               <p class="panel-kicker">Step 2</p>
-              <h2>生成控制与结果预览</h2>
-              <p class="panel-desc">你可以先在本地查看 Prompt 拼接效果，接入 Colab 后这里会直接返回真实图片。</p>
+              <h2>补充描述</h2>
+              <p class="panel-desc">如果你想额外强调氛围、用途或细节，可以在这里补充。没有特殊要求也可以直接生成。</p>
             </div>
           </div>
 
-          <div class="controls-grid">
-            <label>
-              宽度
-              <input id="widthInput" type="number" min="256" max="1024" step="64" value="512" />
-            </label>
-            <label>
-              高度
-              <input id="heightInput" type="number" min="256" max="1024" step="64" value="512" />
-            </label>
-            <label>
-              步数
-              <input id="stepsInput" type="number" min="10" max="50" step="1" value="20" />
-            </label>
-            <label>
-              CFG
-              <input id="cfgInput" type="number" min="1" max="15" step="0.5" value="6" />
-            </label>
-          </div>
-
           <label class="prompt-input">
-            自定义补充描述（中文）
+            用户补充描述（中文）
             <textarea
               id="customPromptZh"
               rows="3"
-              placeholder="比如：一个干净的人像头像，适合微信头像，整体温柔明亮"
+              placeholder="比如：适合微信头像，面部居中，整体明亮干净，角色更有亲和力"
             ></textarea>
           </label>
 
           <div class="action-row">
-            <button id="generateBtn" class="primary-btn" type="button">生成预览</button>
+            <button id="generateBtn" class="primary-btn" type="button">生成头像方案</button>
             <span id="statusText" class="status-text">等待选择参数</span>
           </div>
+        </div>
 
-          <div class="prompt-block">
-            <div class="block-head">
-              <h3>英文 Positive Prompt</h3>
-              <span class="block-tip">给模型的主提示词</span>
+        <div class="panel flow-panel result-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Step 3</p>
+              <h2>头像结果预览</h2>
+              <p class="panel-desc">生成结果会优先保持头像构图完整、人物主体清晰，适合社交头像与角色展示。</p>
             </div>
-            <pre id="positivePrompt"></pre>
-          </div>
-
-          <div class="prompt-block">
-            <div class="block-head">
-              <h3>Negative Prompt</h3>
-              <span class="block-tip">限制瑕疵与错误结构</span>
-            </div>
-            <pre id="negativePrompt"></pre>
           </div>
 
           <div class="image-block">
-            <div class="image-title-row">
-              <div>
-                <h3>生成结果</h3>
-                <p class="image-subtitle">Mock 模式下展示的是 Prompt 预览图，接真实模型后会自动切换成生成图。</p>
-              </div>
-              <span id="backendBadge" class="backend-badge">mock</span>
-            </div>
             <img id="resultImage" alt="generated result" />
             <p id="resultNote" class="result-note"></p>
           </div>

@@ -1,22 +1,14 @@
-﻿const state = {
+const state = {
   config: null,
   selections: {},
 };
 
 const elements = {
   categories: document.getElementById("categories"),
-  positivePrompt: document.getElementById("positivePrompt"),
-  negativePrompt: document.getElementById("negativePrompt"),
   resultImage: document.getElementById("resultImage"),
   resultNote: document.getElementById("resultNote"),
-  backendBadge: document.getElementById("backendBadge"),
-  heroBackendMode: document.getElementById("heroBackendMode"),
   statusText: document.getElementById("statusText"),
   customPromptZh: document.getElementById("customPromptZh"),
-  widthInput: document.getElementById("widthInput"),
-  heightInput: document.getElementById("heightInput"),
-  stepsInput: document.getElementById("stepsInput"),
-  cfgInput: document.getElementById("cfgInput"),
   generateBtn: document.getElementById("generateBtn"),
   resetBtn: document.getElementById("resetBtn"),
   categoryCount: document.getElementById("categoryCount"),
@@ -34,11 +26,6 @@ async function loadConfig() {
 }
 
 function applyDefaults() {
-  const defaults = state.config.generationDefaults.inference;
-  elements.widthInput.value = defaults.width;
-  elements.heightInput.value = defaults.height;
-  elements.stepsInput.value = defaults.numInferenceSteps;
-  elements.cfgInput.value = defaults.guidanceScale;
   elements.categoryCount.textContent = state.config.categories.length;
 }
 
@@ -121,19 +108,20 @@ function updateSelectionMetrics() {
 }
 
 function buildPayload() {
+  const defaults = state.config.generationDefaults.inference;
   return {
     selections: state.selections,
     customPromptZh: elements.customPromptZh.value.trim(),
-    width: Number(elements.widthInput.value),
-    height: Number(elements.heightInput.value),
-    numInferenceSteps: Number(elements.stepsInput.value),
-    guidanceScale: Number(elements.cfgInput.value),
+    width: Number(defaults.width),
+    height: Number(defaults.height),
+    numInferenceSteps: Number(defaults.numInferenceSteps),
+    guidanceScale: Number(defaults.guidanceScale),
   };
 }
 
 async function generatePreview() {
   elements.generateBtn.disabled = true;
-  elements.statusText.textContent = "正在生成预览...";
+  elements.statusText.textContent = "正在整理并生成预览...";
 
   try {
     const response = await fetch("/api/generate", {
@@ -145,12 +133,8 @@ async function generatePreview() {
     });
     const data = await response.json();
 
-    elements.positivePrompt.textContent = data.prompt.positivePrompt;
-    elements.negativePrompt.textContent = data.prompt.negativePrompt;
     elements.resultImage.src = data.result.imageUrl;
     elements.resultNote.textContent = data.result.note;
-    elements.backendBadge.textContent = data.result.backend;
-    elements.heroBackendMode.textContent = data.result.backend;
     elements.statusText.textContent = "预览已更新";
   } catch (error) {
     elements.statusText.textContent = "生成失败";

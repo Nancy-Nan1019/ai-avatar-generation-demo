@@ -1,4 +1,4 @@
-﻿import base64
+import base64
 import html
 import json
 import os
@@ -21,6 +21,44 @@ def load_mapping() -> dict:
 
 
 PROMPT_MAPPING = load_mapping()
+
+
+def flatten_selected_labels(selections: dict) -> set[str]:
+    labels = set()
+    for option_labels in selections.values():
+        if isinstance(option_labels, list):
+            labels.update(option_labels)
+        elif option_labels:
+            labels.add(option_labels)
+    return labels
+
+
+def resolve_negative_profiles(selections: dict) -> list[str]:
+    profiles = ["portrait"]
+    selected_labels = flatten_selected_labels(selections)
+
+    duo_labels = {
+        "情侣头像（双人互动）",
+        "闺蜜头像（同款不同色）",
+        "兄弟羁绊风",
+    }
+    action_labels = {
+        "热血战斗",
+        "打篮球",
+        "魔法施法",
+        "战斗姿势",
+    }
+
+    if selected_labels & duo_labels:
+        profiles.append("duo")
+    if "全身像" in selected_labels:
+        profiles.append("full_body")
+    if selected_labels & action_labels:
+        profiles.append("action")
+    if any(label.startswith("纯色背景") for label in selected_labels) or "留白设计" in selected_labels:
+        profiles.append("clean_background")
+
+    return profiles
 
 
 def build_prompt(payload: dict) -> dict:
@@ -56,6 +94,11 @@ def build_prompt(payload: dict) -> dict:
     if custom_prompt:
         positive_parts.append(f"additional concept: {custom_prompt}")
 
+    negative_profiles = resolve_negative_profiles(selections)
+    negative_profile_map = PROMPT_MAPPING["generationDefaults"].get("negativePromptProfiles", {})
+    for profile in negative_profiles:
+        negative_parts.extend(negative_profile_map.get(profile, []))
+
     positive_prompt = ", ".join(dict.fromkeys(part.strip() for part in positive_parts if part.strip()))
     negative_prompt = ", ".join(dict.fromkeys(part.strip() for part in negative_parts if part.strip()))
 
@@ -70,6 +113,7 @@ def build_prompt(payload: dict) -> dict:
     return {
         "positivePrompt": positive_prompt,
         "negativePrompt": negative_prompt,
+        "negativeProfilesApplied": negative_profiles,
         "selectedOptions": selected_labels,
         "generation": generation,
     }

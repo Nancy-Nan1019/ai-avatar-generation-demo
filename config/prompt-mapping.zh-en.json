@@ -337,6 +337,38 @@
       "text",
       "jpeg artifacts"
     ],
+    "negativePromptProfiles": {
+      "portrait": [
+        "distorted face",
+        "off-center face",
+        "duplicate face",
+        "unclear eyes"
+      ],
+      "duo": [
+        "merged bodies",
+        "fused limbs",
+        "extra arms",
+        "extra legs",
+        "overlapping faces"
+      ],
+      "full_body": [
+        "bad proportions",
+        "missing legs",
+        "cropped feet",
+        "extra limbs"
+      ],
+      "action": [
+        "static pose",
+        "awkward motion",
+        "broken anatomy",
+        "motion blur on face"
+      ],
+      "clean_background": [
+        "busy background",
+        "cluttered scene",
+        "background text"
+      ]
+    },
     "modelRecommendation": {
       "primary": "runwayml/stable-diffusion-v1-5",
       "secondary": "stabilityai/stable-diffusion-xl-base-1.0"

@@ -163,6 +163,12 @@ python app.py
 - 但通过 Hugging Face Provider 调用时，权限和额度约束比较明显
 - 更适合作为远端高质量模型候选，而不是本地主力方案
 
+第三张选择古风仙侠为主题，结果如下：
+
+![krea_xianxia_test.py](./krea_xianxia_test.py)
+
+![Krea Xianxia Test](./krea_xianxia_test.png)
+
 ### 2. `Tongyi-MAI/Z-Image-Turbo`
 
 - 测试方式：Hugging Face Inference Providers
@@ -180,6 +186,12 @@ python app.py
 - 更新后的 Prompt 在头像构图和主体聚焦上更稳定，更适合做展示图
 - 在远端 provider 上可以跑通
 - 但免费额度非常有限，第二次继续调用就已经触发 `402 Payment Required`
+
+古风仙侠主题的结果如下：
+
+![tongyi_xianxia_test.py](./tongyi_xianxia_test.py)
+
+![Tongyi Xianxia Test](./zimage_xianxia_test.png)
 
 ### 3. `Tongyi-MAI/Z-Image-Turbo` 第二组 Prompt
 

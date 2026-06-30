@@ -17,6 +17,9 @@ const elements = {
 };
 
 async function loadConfig() {
+  elements.resultImage.hidden = true;
+  elements.resultNote.textContent = "";
+
   const response = await fetch("/api/config");
   state.config = await response.json();
   applyDefaults();
@@ -120,8 +123,7 @@ function buildPayload() {
 }
 
 async function generatePreview() {
-  elements.generateBtn.disabled = true;
-  elements.statusText.textContent = "正在整理并生成预览...";
+  elements.statusText.textContent = "正在生成预览...";
 
   try {
     const response = await fetch("/api/generate", {
@@ -133,14 +135,15 @@ async function generatePreview() {
     });
     const data = await response.json();
 
+    elements.resultImage.hidden = false;
     elements.resultImage.src = data.result.imageUrl;
-    elements.resultNote.textContent = data.result.note;
+    elements.resultNote.textContent = "";
     elements.statusText.textContent = "预览已更新";
   } catch (error) {
+    elements.resultImage.hidden = true;
+    elements.resultImage.removeAttribute("src");
+    elements.resultNote.textContent = "";
     elements.statusText.textContent = "生成失败";
-    elements.resultNote.textContent = `请求失败：${error.message}`;
-  } finally {
-    elements.generateBtn.disabled = false;
   }
 }
 

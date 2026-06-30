@@ -312,30 +312,38 @@ textarea {
   align-items: center;
 }
 
-.status-text,
-.result-note {
+.status-text {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.6;
+  min-height: 22px;
 }
 
 .image-block {
+  display: grid;
+  place-items: center;
+  min-height: 420px;
   margin-top: 12px;
-  padding: 16px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--line);
+  padding: 28px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255, 245, 239, 0.96), rgba(244, 248, 252, 0.96));
+  border: 1px solid rgba(31, 41, 64, 0.08);
 }
 
 #resultImage {
-  width: 100%;
-  margin-top: 4px;
+  width: min(100%, 520px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(255, 199, 160, 0.16), rgba(171, 208, 235, 0.14));
+  border-radius: 24px;
+  border: 1px solid rgba(31, 41, 64, 0.08);
+  background: transparent;
+  box-shadow: 0 20px 48px rgba(35, 45, 66, 0.12);
 }
+
+.result-note {
+  display: none;
+}
+
 
 @media (max-width: 1100px) {
   .hero-card {

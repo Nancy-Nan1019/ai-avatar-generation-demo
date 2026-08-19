@@ -1,81 +1,117 @@
-# 天猫 AI 头像馆
+# Tmall AI Avatar Studio
 
-一个面向头像定制场景的最小可运行原型。前端提供中文参数选择界面，后端把这些选项整理成适合文生图模型理解的英文视觉短语，并输出生成结果预览。当前版本的重点不是做通用文生图工作台，而是围绕“头像定制”这一类明确场景，把参数组织、Prompt 整理和图片后端切换做成一条完整链路。
+一个围绕“头像定制”场景搭建的最小可运行原型。  
+系统支持中文标签选参、首图生成、基于当前结果继续编辑，以及校园图书馆背景快速合成。
 
-## 项目目标
+当前版本的重点不是追求最强模型效果，而是先把下面这条产品链路做完整：
 
-这个项目当前主要解决四件事：
+`中文标签 -> Prompt 组织 -> 图片生成 -> 二次编辑 -> 背景处理 -> 结果下载`
 
-- 把截图式参数表整理成可点击的中文标签界面
-- 把中文业务词映射成更规范的英文视觉短语，而不是生硬直译
-- 给不同图片模型准备统一的输入组织方式
-- 在算力有限的条件下，先完成可演示、可对比、可继续扩展的头像生成原型
+## 1. Current Scope
 
-## 当前实现
+当前仓库已经实现的能力：
 
-- 前端：`static/index.html` + `static/app.js` + `static/styles.css`
-- 后端：`app.py`
-- 参数映射：`config/prompt-mapping.zh-en.json`
-- Colab 远端服务示例：`colab/colab_server.py`
-- Provider 测试脚本：`krea_test.py`、`zimage_test.py`、`zimage_test2.py`
+- 中文视觉标签选择界面
+- 标签到视觉 Prompt 的后端映射与分层组织
+- 首图生成
+- 基于当前结果继续编辑
+- 校园图书馆背景快速合成
+- 背景模式切换
+  - `快速合成`：当前可用
+  - `高级背景编辑`：预留入口
 
-项目目前使用 Python 标准库 HTTP 服务，不依赖前端构建工具，也还不是 React + Express 架构。README 中的说明都基于当前仓库里的真实实现，不额外虚构还没落地的能力。
+当前没有完全落地的能力：
 
-## 页面说明
+- 真正的高质量高级编辑工作流
+- 基于重模型的自然背景重绘
+- 稳定的本地大模型推理
 
-首页已经调整成单列流程式交互，用户从上到下完成三步：
+## 2. Repository Layout
+
+```text
+.
+├─ app.py                         # 主后端服务
+├─ static/                        # 前端页面、样式、脚本、背景素材
+├─ config/                        # Prompt 映射与背景配置
+├─ docs/                          # 过程文档与架构说明
+├─ prompt_test/                   # Prompt 组合与模型调用实验脚本
+├─ experiments/
+│  └─ provider-tests/             # 外部模型 Provider 测试脚本与结果图
+├─ colab/                         # Colab 远端服务示例
+├─ assets/
+│  └─ reference/                  # 参考输入素材
+└─ requirements-diffusers.txt     # 本地 diffusers 依赖
+```
+
+## 3. Main Files
+
+- [app.py](./app.py)
+  - 当前项目的主后端
+  - 包含首图生成、编辑、背景快速合成接口
+
+- [static/index.html](./static/index.html)
+  - 主页面结构
+
+- [static/app.js](./static/app.js)
+  - 前端交互逻辑
+
+- [static/styles.css](./static/styles.css)
+  - 页面样式
+
+- [config/prompt-mapping.zh-en.json](./config/prompt-mapping.zh-en.json)
+  - 中文标签与视觉短语映射
+
+- [config/backgrounds.json](./config/backgrounds.json)
+  - 校园背景素材配置
+
+## 4. Product Flow
+
+当前页面按下面的顺序使用：
 
 1. 选择角色视觉标签
-2. 按需补充额外中文描述
-3. 查看头像结果预览
+2. 输入补充中文描述
+3. 生成首图
+4. 继续编辑当前结果
+5. 快速合成校园背景
+6. 下载结果图片
 
-当前页面刻意隐藏了很多技术细节，例如：
+## 5. Prompt Strategy
 
-- 不直接给用户展示 Prompt 文本
-- 不在页面中暴露 mock / remote / diffusers 等模式词
-- 不暴露采样步数、CFG、宽高等底层参数
+当前后端已经把 Prompt 分成两条路线：
 
-这样做的目的，是让页面更像“头像定制产品”，而不是“模型调参面板”。
+### Generate Prompt
 
-## Prompt 组织方式
+用于首图生成，主要按这些语义桶组织：
 
-### 正向 Prompt
+- `quality`
+- `style`
+- `subject`
+- `outfit`
+- `pose`
+- `scene`
+- `mood`
+- `output`
+- `custom`
 
-当前正向 Prompt 的来源由三部分组成：
+### Edit Prompt
 
-1. 固定质量前缀
-2. 中文选项映射出的英文视觉短语
-3. 用户补充输入的中文描述
+用于二次编辑，重点表达：
 
-配置文件中的 `promptEn` 已经不是逐字翻译，而是更适合图片模型理解的视觉描述。例如：
+- 保留什么
+- 想改什么
+- 目标风格/氛围是什么
+- 输出需要避免什么问题
 
-- `日系萌系` -> `anime portrait style, cute youthful aesthetic`
-- `校园清新` -> `fresh school-life illustration, bright youthful atmosphere`
-- `微信头像` -> `avatar-friendly composition, centered face for wechat profile`
-- `圆形裁剪兼容` -> `circle-crop friendly framing, face centered in composition`
+这部分思路参考了更完整的编辑系统设计，但当前仓库只复用了 Prompt 与交互框架，没有把重型编辑引擎整套接进来。
 
-### 负向 Prompt
+## 6. Run Locally
 
-当前负向 Prompt 采用两层结构：
+### 6.1 Mock Mode
 
-- 基础通用负向词
-- 按场景自动追加的负向 profiles
+如果只是先看页面与交互逻辑：
 
-目前内置的 profiles 包括：
-
-- `portrait`：头像构图类
-- `duo`：双人头像类
-- `full_body`：全身像类
-- `action`：动作 / 战斗类
-- `clean_background`：纯色或留白背景类
-
-这让系统在不同头像场景下，不必完全依赖用户自己写 negative prompt，而是可以自动补一层常见约束。
-
-## 运行方式
-
-### 本地启动
-
-```bash
+```powershell
+cd D:\XJTLU\Diffusion
 python app.py
 ```
 
@@ -85,185 +121,125 @@ python app.py
 http://127.0.0.1:8000
 ```
 
-## 后端模式
+### 6.2 Diffusers Mode
 
-### `mock`
-
-默认模式，不需要下载模型。页面会返回一张包含 Prompt 摘要的预览图，用于检查参数映射和组合逻辑是否正确。
-
-### `diffusers`
-
-在本机直接调用 `diffusers` 和本地模型。
-
-先安装依赖：
-
-```bash
-pip install -r requirements-diffusers.txt
-```
-
-再设置环境变量：
+如果要跑本地模型：
 
 ```powershell
+cd D:\XJTLU\Diffusion
+.\.venv-small-sd\Scripts\Activate.ps1
 $env:DIFFUSION_BACKEND="diffusers"
-$env:DIFFUSION_MODEL_ID="runwayml/stable-diffusion-v1-5"
+$env:DIFFUSION_MODEL_ID="segmind/small-sd"
 python app.py
 ```
 
 说明：
 
-- 没有 GPU 时会退到 CPU，速度会非常慢
-- 当前机器本地只有很弱的显卡和 CPU 版 torch，不适合跑重模型
-- `runwayml/stable-diffusion-v1-5` 只是默认值，不代表最终推荐模型
+- 当前这条路线可以运行，但效果有限
+- 本地机器算力较弱，生成质量主要受模型和显存限制
+
+### 6.3 Background Compose Dependencies
+
+如果要使用“快速合成背景”，当前环境还需要：
+
+```powershell
+python -m pip install rembg onnxruntime
+```
+
+验证方式：
+
+```powershell
+python -c "import rembg; print('rembg ok')"
+python -c "import onnxruntime; print('onnxruntime ok')"
+```
+
+## 7. Current Backends
+
+### `mock`
+
+- 默认可用
+- 不真实生成图片
+- 用于检查参数、页面和 Prompt 逻辑
+
+### `diffusers`
+
+- 使用本地 diffusers 模型
+- 适合当前原型演示
+- 质量受模型和本地机器限制
 
 ### `remote`
 
-把真实模型放在 Colab 或别的远端 GPU 上运行，本项目只负责 Prompt 整理和请求转发。
+- 适合后续接 Colab 或远端 GPU 服务
+- 当前仓库保留了远端服务接入结构
 
-```powershell
-$env:DIFFUSION_BACKEND="remote"
-$env:DIFFUSION_REMOTE_URL="https://你的远端服务地址"
-python app.py
-```
+## 8. Background Modes
 
-远端服务需要兼容：
+系统当前提供两种背景路线：
 
-- `POST /generate`
-- JSON 请求体中包含 `prompt`、`negative_prompt`、`width`、`height`、`num_inference_steps`、`guidance_scale`
+### 快速合成
 
-项目里附带了一个 Colab 服务示例：
+当前已经实现：
 
-- `colab/colab_server.py`
+- 抠出人物主体
+- 贴到预设校园图书馆背景上
 
-## 已测试模型与结果
+优点：
 
-这一部分记录了当前仓库里已经真实测试过的图片模型、调用方式、效果结果和资源限制。
+- 稳定
+- 本地可运行
+- 适合演示
 
-### 1. `krea/Krea-2-Turbo`
+缺点：
 
-- 测试方式：Hugging Face Inference Providers
-- Provider：`fal-ai`
-- 测试脚本：[krea_test.py](./krea_test.py)
-- 主要特点：角色感和风格化表达都比较强，整体观感偏精致
-- 本地运行结论：当前机器本地显卡和 CUDA 环境不足，不适合本地直接推理
+- 有时会有合成感
 
-测试 Prompt 使用的是一条偏校园风男性角色头像的描述。当前 README 保留两张 Krea 测试图，分别对应原始版本和后续调整 Prompt 后的新版本。
+### 高级背景编辑
 
-第一张结果如下：
+当前仅预留入口，尚未正式接入重模型工作流。
 
-![Krea Test](./krea_test.png)
+目标方向：
 
-第二张结果如下：
+- 通过更强编辑模型直接重绘背景
+- 保持人物主体稳定
+- 让结果更自然
 
-![Krea Test 2](./krea_test2.png)
+## 9. Experiments
 
-测试观察：
+仓库中的实验内容已经整理到专门目录：
 
-- 从结果上看，这条路线的出图风格比较接近我们想要的“精致头像感”
-- `krea_test2.png` 对应调整后的 Prompt，说明这条模型路线对提示词变化比较敏感，值得继续做 Prompt 优化
-- 但通过 Hugging Face Provider 调用时，权限和额度约束比较明显
-- 更适合作为远端高质量模型候选，而不是本地主力方案
+- [prompt_test/](./prompt_test/)
+  - Prompt 组合与模型实验
 
-第三张选择古风仙侠为主题，结果如下：
+- [experiments/provider-tests/](./experiments/provider-tests/)
+  - Krea、Tongyi 等 Provider 测试脚本与结果图
 
-![krea_xianxia_test.py](./krea_xianxia_test.py)
+这些内容主要用于：
 
-![Krea Xianxia Test](./krea_xianxia_test.png)
+- 对比不同模型路线
+- 记录 Prompt 调整效果
+- 给后续模型选型提供参考
 
-### 2. `Tongyi-MAI/Z-Image-Turbo`
+## 10. Current Limitations
 
-- 测试方式：Hugging Face Inference Providers
-- Provider：`fal-ai`
-- 测试脚本：[zimage_test.py](./zimage_test.py)
-- 主要特点：支持较清晰的头像构图，角色主体稳定度相对不错
-- 本地运行结论：模型本体比 Krea 更现实一些，但对当前机器仍然不适合本地跑
+当前最主要的限制不是代码，而是资源条件：
 
-第一张测试图原本使用了较早的一版 Prompt，后来重新整理了更合理的头像描述，因此展示图替换成了新的 `zimage_test3.png`，结果如下：
+- 本地显存与算力有限
+- 轻量模型可跑，但质量不够理想
+- 高质量模型通常需要远端 GPU 或更复杂工作流
+- Hugging Face Provider 路线受额度与权限约束
 
-![Z-Image Test 1](./zimage_test3.png)
+因此当前项目定位更适合：
 
-测试观察：
+- 作为可运行原型
+- 作为课程/汇报演示系统
+- 作为后续高级编辑服务的前端与调度入口
 
-- 更新后的 Prompt 在头像构图和主体聚焦上更稳定，更适合做展示图
-- 在远端 provider 上可以跑通
-- 但免费额度非常有限，第二次继续调用就已经触发 `402 Payment Required`
+## 11. Roadmap
 
-古风仙侠主题的结果如下：
+下一阶段比较值得继续做的事情：
 
-![tongyi_xianxia_test.py](./tongyi_xianxia_test.py)
-
-![Tongyi Xianxia Test](./zimage_xianxia_test.png)
-
-### 3. `Tongyi-MAI/Z-Image-Turbo` 第二组 Prompt
-
-- 测试方式：Hugging Face Inference Providers
-- Provider：`fal-ai`
-- 测试脚本：[zimage_test2.py](./zimage_test2.py)
-- Prompt 更偏动作氛围、战斗风格和幻想配色
-
-第二组结果图如下：
-
-![Z-Image Test 2](./zimage_test2.png)
-
-测试观察：
-
-- 更适合做风格强、情绪更明显的角色图
-- 在风格词较集中的情况下，画面表现力不错
-- 但同样受限于 Hugging Face Provider 的月度免费额度
-
-## 测试阶段的现实问题
-
-目前项目已经验证出一个很清楚的现实约束：
-
-- 本地机器显存太小，不适合跑更大的高质量模型
-- Colab 免费额度不稳定，也很难长期支撑重模型测试
-- Hugging Face Provider 路线可以快速验证效果，但免费额度很快会耗尽
-- 更轻量的本地方案虽然可行，但效果又不满足目标
-
-这意味着当前最现实的工程策略不是“完全本地大模型生成”，而是：
-
-- 前端和 Prompt 系统留在本地
-- 真实图片生成交给远端高质量模型
-- 需要演示时，可以结合少量实时生成和预生成结果图一起展示
-
-## API
-
-### `GET /api/config`
-
-返回中文选项配置和默认生成参数。
-
-### `POST /api/generate`
-
-根据前端选择：
-
-- 组装正向 Prompt
-- 自动组合负向 Prompt
-- 调用当前模式对应的图片后端
-
-请求体示例：
-
-```json
-{
-  "selections": {
-    "style_base": ["日系萌系"],
-    "appearance_hair": ["双马尾", "粉毛"],
-    "persona_school_role": ["JK制服女生"],
-    "pose_basic": ["半身像"],
-    "scene_school": ["教室窗边"],
-    "mood_emotion": ["温柔治愈"]
-  },
-  "customPromptZh": "适合微信头像，整体温柔明亮",
-  "width": 512,
-  "height": 512,
-  "numInferenceSteps": 20,
-  "guidanceScale": 6
-}
-```
-
-## 下一步建议
-
-如果继续往下迭代，当前最推荐的方向是：
-
-1. 把正向 Prompt 从简单拼接升级成模板化组装
-2. 给前端增加“分类折叠 / 一级导航”，减少长页面压力
-3. 把远端图片后端继续抽象成可切换模式
-4. 在 README 和页面中继续补充真实模型测试记录，而不是只写理论说明
+1. 继续压缩和优化轻量模型 Prompt
+2. 稳定跑通背景快速合成依赖
+3. 整理演示话术与系统能力说明
+4. 评估是否把高级编辑能力拆成独立服务
+5. 后续在你自己的 GitHub 仓库中作为主线版本持续维护

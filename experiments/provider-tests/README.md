@@ -13,8 +13,6 @@
 - `tongyi_xianxia_test.py`
   - 古风仙侠主题测试脚本
 
-- `small_sd_chinese_test.png`
-  - 本地轻量模型中文 Prompt 测试结果图
 
 这些脚本不属于主系统运行必需文件，它们的作用是：
 

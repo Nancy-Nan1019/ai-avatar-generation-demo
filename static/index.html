@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>天猫 AI 头像馆</title>
+    <title>&#22825;&#29483; AI &#22836;&#20687;&#39302;</title>
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
@@ -11,38 +11,38 @@
       <section class="hero-card">
         <div class="hero-copy">
           <p class="eyebrow">Tmall AI Avatar Studio</p>
-          <h1>天猫 AI 头像馆</h1>
-          <p class="hero-lead">用中文选择角色视觉标签，系统自动整理头像生成方案。</p>
+          <h1>&#22825;&#29483; AI &#22836;&#20687;&#39302;</h1>
+          <p class="hero-lead">&#29992;&#20013;&#25991;&#36873;&#25321;&#35282;&#33394;&#26631;&#31614;&#65292;&#31995;&#32479;&#33258;&#21160;&#32452;&#21512;&#25552;&#31034;&#20449;&#24687;&#24182;&#29983;&#25104;&#22836;&#20687;&#26041;&#26696;&#12290;</p>
           <p class="subtitle">
-            这套页面面向头像定制场景，重点是角色风格、人物特征、社交头像构图和结果预览。用户只需要按步骤完成选择，不需要理解模型参数或提示词细节。
+            &#39029;&#38754;&#29616;&#22312;&#25903;&#25345;&#22312;&#39318;&#27425;&#29983;&#25104;&#26102;&#23601;&#36873;&#25321;&#26657;&#22253;&#22270;&#20070;&#39302;&#32972;&#26223;&#65292;&#20063;&#21487;&#20197;&#23545;&#24050;&#26377;&#32467;&#26524;&#20570;&#20108;&#27425;&#20462;&#25913;&#21644;&#29420;&#31435;&#25442;&#32972;&#26223;&#12290;
           </p>
           <div class="hero-tags">
-            <span class="hero-tag">中文标签选参</span>
-            <span class="hero-tag">头像场景定制</span>
-            <span class="hero-tag">一键生成预览</span>
+            <span class="hero-tag">&#20013;&#25991;&#26631;&#31614;&#36873;&#21442;</span>
+            <span class="hero-tag">&#39318;&#22270;&#30452;&#25509;&#24102;&#26657;&#22253;&#32972;&#26223;</span>
+            <span class="hero-tag">&#20108;&#27425;&#20462;&#25913;</span>
           </div>
           <div class="hero-flow">
-            <span>1 选择标签</span>
-            <span>2 补充描述</span>
-            <span>3 生成头像</span>
+            <span>1 &#36873;&#25321;&#20154;&#29289;&#26631;&#31614;</span>
+            <span>2 &#36873;&#26657;&#22253;&#32972;&#26223;</span>
+            <span>3 &#36755;&#20986;&#25104;&#21697;&#22270;</span>
           </div>
         </div>
 
         <div class="hero-side">
           <div class="mini-stat mini-stat-accent">
-            <span class="mini-stat-label">参数分类</span>
+            <span class="mini-stat-label">&#21442;&#25968;&#20998;&#31867;</span>
             <strong id="categoryCount">0</strong>
-            <p>覆盖风格、外貌、穿搭、动作、场景与头像适配。</p>
+            <p>&#35206;&#30422;&#39118;&#26684;&#12289;&#20154;&#35774;&#12289;&#22806;&#35980;&#12289;&#31359;&#25645;&#12289;&#21160;&#20316;&#12289;&#22330;&#26223;&#19982;&#22836;&#20687;&#26500;&#22270;&#12290;</p>
           </div>
           <div class="mini-stat">
-            <span class="mini-stat-label">当前已选</span>
+            <span class="mini-stat-label">&#24403;&#21069;&#24050;&#36873;</span>
             <strong id="selectedCount">0</strong>
-            <p>实时统计当前组合，方便控制人物设定复杂度。</p>
+            <p>&#23454;&#26102;&#32479;&#35745;&#24403;&#21069;&#32452;&#21512;&#65292;&#26041;&#20415;&#25511;&#21046;&#20154;&#29289;&#35774;&#23450;&#30340;&#22797;&#26434;&#24230;&#12290;</p>
           </div>
           <div class="mini-stat">
-            <span class="mini-stat-label">适用场景</span>
-            <strong>头像定制</strong>
-            <p>优先面向社交头像、校园人设和风格化角色展示。</p>
+            <span class="mini-stat-label">&#32972;&#26223;&#32032;&#26448;</span>
+            <strong id="backgroundCount">0</strong>
+            <p>&#39044;&#32622;&#22810;&#20010;&#26657;&#22253;&#22270;&#20070;&#39302;&#32972;&#26223;&#65292;&#21487;&#29992;&#20110;&#39318;&#22270;&#30452;&#20986;&#21644;&#21518;&#32493;&#21512;&#25104;&#12290;</p>
           </div>
         </div>
       </section>
@@ -52,20 +52,20 @@
           <div class="panel-head">
             <div>
               <p class="panel-kicker">Step 1</p>
-              <h2>角色视觉标签</h2>
-              <p class="panel-desc">按中文分类选择画风、人设、发型、服装、动作和场景，系统会自动整理成头像生成方案。</p>
+              <h2>&#35282;&#33394;&#35270;&#35273;&#26631;&#31614;</h2>
+              <p class="panel-desc">&#25353;&#20013;&#25991;&#20998;&#31867;&#36873;&#25321;&#30011;&#39118;&#12289;&#20154;&#35774;&#12289;&#21457;&#22411;&#12289;&#26381;&#35013;&#12289;&#21160;&#20316;&#21644;&#22330;&#26223;&#65292;&#31995;&#32479;&#20250;&#22312;&#21518;&#31471;&#33258;&#21160;&#25972;&#29702;&#29983;&#25104;&#25552;&#31034;&#20449;&#24687;&#12290;</p>
             </div>
-            <button id="resetBtn" class="ghost-btn" type="button">清空选择</button>
+            <button id="resetBtn" class="ghost-btn" type="button">&#28165;&#31354;&#36873;&#25321;</button>
           </div>
 
           <div class="selection-summary">
             <div class="summary-card">
-              <span class="summary-label">已选条目</span>
+              <span class="summary-label">&#24050;&#36873;&#26465;&#30446;</span>
               <strong id="selectedSummaryCount">0</strong>
             </div>
             <div class="summary-card">
-              <span class="summary-label">推荐顺序</span>
-              <strong>画风 → 人设 → 外貌 → 场景</strong>
+              <span class="summary-label">&#25512;&#33616;&#36873;&#25321;&#39034;&#24207;</span>
+              <strong>&#30011;&#39118; → &#20154;&#35774; → &#22806;&#35980; → &#22330;&#26223;</strong>
             </div>
           </div>
 
@@ -76,36 +76,204 @@
           <div class="panel-head">
             <div>
               <p class="panel-kicker">Step 2</p>
-              <h2>补充描述</h2>
-              <p class="panel-desc">如果你想额外强调氛围、用途或细节，可以在这里补充。没有特殊要求也可以直接生成。</p>
+              <h2>&#34917;&#20805;&#35828;&#26126;&#19982;&#32972;&#26223;</h2>
+              <p class="panel-desc">&#21487;&#20197;&#30452;&#25509;&#36755;&#20837;&#20013;&#25991;&#34917;&#20805;&#20449;&#24687;&#65292;&#24182;&#19988;&#22312;&#39318;&#27425;&#29983;&#25104;&#21069;&#23601;&#36873;&#25321;&#23398;&#26657;&#19982;&#22270;&#20070;&#39302;&#32972;&#26223;&#12290;</p>
             </div>
           </div>
 
           <label class="prompt-input">
-            用户补充描述（中文）
+            &#29992;&#25143;&#34917;&#20805;&#25551;&#36848;&#65288;&#20013;&#25991;&#65289;
             <textarea
               id="customPromptZh"
               rows="3"
-              placeholder="比如：适合微信头像，面部居中，整体明亮干净，角色更有亲和力"
+              placeholder="&#27604;&#22914;&#65306;&#36866;&#21512;&#24494;&#20449;&#22836;&#20687;&#65292;&#38754;&#37096;&#23621;&#20013;&#65292;&#25972;&#20307;&#26126;&#20142;&#24178;&#20928;&#65292;&#35282;&#33394;&#26356;&#26377;&#20146;&#21644;&#21147;"
             ></textarea>
           </label>
 
+          <div class="generate-background-box">
+            <label class="checkbox-row">
+              <input id="applyBackgroundOnGenerate" type="checkbox" />
+              <span>&#39318;&#27425;&#29983;&#25104;&#26102;&#30452;&#25509;&#24102;&#26657;&#22253;&#22270;&#20070;&#39302;&#32972;&#26223;</span>
+            </label>
+
+            <div class="compose-grid">
+              <label>
+                &#23398;&#26657;
+                <select id="generateSchoolSelect"></select>
+              </label>
+
+              <label>
+                &#32972;&#26223;&#22330;&#26223;
+                <select id="generateBackgroundSelect"></select>
+              </label>
+
+              <label>
+                &#20154;&#29289;&#20301;&#32622;
+                <select id="generatePlacementSelect">
+                  <option value="center">&#23621;&#20013;</option>
+                  <option value="left">&#20559;&#24038;</option>
+                  <option value="right">&#20559;&#21491;</option>
+                </select>
+              </label>
+
+              <label>
+                &#20154;&#29289;&#22823;&#23567;
+                <select id="generateScalePresetSelect">
+                  <option value="medium">&#21322;&#36523;&#40664;&#35748;</option>
+                  <option value="close">&#36817;&#26223;</option>
+                  <option value="small">&#31245;&#36828;</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="background-preview-card compact-preview">
+              <img id="generateBackgroundPreview" alt="generate background preview" />
+              <p id="generateBackgroundDescription" class="background-description"></p>
+            </div>
+          </div>
+
           <div class="action-row">
-            <button id="generateBtn" class="primary-btn" type="button">生成头像方案</button>
-            <span id="statusText" class="status-text">等待选择参数</span>
+            <button id="generateBtn" class="primary-btn" type="button">&#29983;&#25104;&#22836;&#20687;&#26041;&#26696;</button>
+            <span id="statusText" class="status-text">&#31561;&#24453;&#36873;&#25321;&#21442;&#25968;</span>
+          </div>
+        </div>
+
+        <div class="panel flow-panel edit-panel-wrap">
+          <div class="edit-panel">
+            <div class="edit-panel-head">
+              <h3>&#22522;&#20110;&#24050;&#26377;&#22270;&#29255;&#32487;&#32493;&#20462;&#25913;</h3>
+              <p>&#20808;&#29983;&#25104;&#19968;&#24352;&#22522;&#30784;&#22836;&#20687;&#65292;&#20877;&#38024;&#23545;&#20154;&#29289;&#12289;&#27668;&#36136;&#25110;&#32972;&#26223;&#26041;&#21521;&#20570;&#20108;&#27425;&#32454;&#21270;&#12290;</p>
+            </div>
+
+            <div class="edit-flow-note">
+              <span class="edit-flow-chip">&#20808;&#20445;&#30041;&#20027;&#20307;</span>
+              <span class="edit-flow-chip">&#20877;&#23616;&#37096;&#20462;&#25913;</span>
+              <span class="edit-flow-chip">&#26368;&#21518;&#35266;&#23519;&#32467;&#26524;</span>
+            </div>
+
+            <div class="compose-grid edit-grid">
+              <label>
+                &#20462;&#25913;&#27169;&#24335;
+                <select id="editModeSelect">
+                  <option value="character">&#20154;&#29289;&#24418;&#35937;&#24494;&#35843;</option>
+                  <option value="style">&#39118;&#26684;&#21644;&#27668;&#36136;&#35843;&#25972;</option>
+                  <option value="background">&#32972;&#26223;&#26041;&#21521;&#35843;&#25972;</option>
+                </select>
+              </label>
+
+              <label class="upload-input inline-upload">
+                &#19978;&#20256;&#24050;&#26377;&#22270;&#29255;&#65288;&#21487;&#36873;&#65289;
+                <input id="editImageInput" type="file" accept="image/png,image/jpeg,image/webp" />
+              </label>
+            </div>
+
+            <p id="editSourceHint" class="edit-source-hint"></p>
+
+            <label class="prompt-input edit-textarea">
+              &#20462;&#25913;&#35201;&#27714;&#65288;&#20013;&#25991;&#65289;
+              <textarea
+                id="editInstructionZh"
+                rows="3"
+                placeholder="&#27604;&#22914;&#65306;&#20445;&#30041;&#36825;&#20010;&#20154;&#30340;&#33080;&#21644;&#21457;&#22411;&#65292;&#25226;&#34915;&#26381;&#25913;&#25104;&#27721;&#26381;&#65292;&#25972;&#20307;&#27668;&#36136;&#26356;&#28165;&#20919;&#19968;&#28857;"
+              ></textarea>
+            </label>
+
+            <div class="action-row edit-actions">
+              <button id="editCurrentBtn" class="ghost-btn" type="button">&#32487;&#32493;&#20462;&#25913;&#24403;&#21069;&#32467;&#26524;</button>
+              <button id="editUploadBtn" class="primary-btn" type="button">&#19978;&#20256;&#22270;&#29255;&#21518;&#20462;&#25913;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel flow-panel background-panel-wrap">
+          <div class="edit-panel background-panel">
+            <div class="edit-panel-head">
+              <h3>&#29420;&#31435;&#32972;&#26223;&#26367;&#25442;</h3>
+              <p>&#22914;&#26524;&#20320;&#24050;&#32463;&#26377;&#20102;&#19968;&#24352;&#20154;&#29289;&#22270;&#65292;&#21487;&#20197;&#20877;&#21333;&#29420;&#25442;&#19968;&#27425;&#23398;&#26657;&#22270;&#20070;&#39302;&#32972;&#26223;&#12290;&#24403;&#21069;&#40664;&#35748;&#20351;&#29992;&#24555;&#36895;&#21512;&#25104;&#65292;&#21516;&#26102;&#39044;&#30041;&#39640;&#32423;&#32972;&#26223;&#32534;&#36753;&#27169;&#24335;&#12290;</p>
+            </div>
+
+            <div class="background-mode-switch" role="tablist" aria-label="background mode">
+              <button id="backgroundModeComposeBtn" class="mode-pill active" type="button">&#24555;&#36895;&#21512;&#25104;</button>
+              <button id="backgroundModeAdvancedBtn" class="mode-pill" type="button">&#39640;&#32423;&#32972;&#26223;&#32534;&#36753;</button>
+            </div>
+
+            <p id="backgroundModeHint" class="background-mode-hint"></p>
+
+            <div class="compose-grid">
+              <label>
+                &#22270;&#29255;&#26469;&#28304;
+                <select id="composeSourceMode">
+                  <option value="current">&#20351;&#29992;&#24403;&#21069;&#32467;&#26524;&#22270;</option>
+                  <option value="upload">&#19978;&#20256;&#19968;&#24352;&#20154;&#29289;&#22270;</option>
+                </select>
+              </label>
+
+              <label>
+                &#23398;&#26657;
+                <select id="schoolSelect"></select>
+              </label>
+
+              <label>
+                &#32972;&#26223;&#22330;&#26223;
+                <select id="backgroundSelect"></select>
+              </label>
+
+              <label>
+                &#20154;&#29289;&#20301;&#32622;
+                <select id="placementSelect">
+                  <option value="center">&#23621;&#20013;</option>
+                  <option value="left">&#20559;&#24038;</option>
+                  <option value="right">&#20559;&#21491;</option>
+                </select>
+              </label>
+
+              <label>
+                &#20154;&#29289;&#22823;&#23567;
+                <select id="scalePresetSelect">
+                  <option value="medium">&#21322;&#36523;&#40664;&#35748;</option>
+                  <option value="close">&#36817;&#26223;</option>
+                  <option value="small">&#31245;&#36828;</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="upload-input" id="composeUploadWrap" hidden>
+              &#19978;&#20256;&#20154;&#29289;&#22270;&#65288;&#21487;&#36873;&#65289;
+              <input id="composeImageInput" type="file" accept="image/png,image/jpeg,image/webp" />
+            </label>
+
+            <div class="background-preview-card compact-preview">
+              <img id="backgroundPreview" alt="background preview" />
+              <p id="backgroundDescription" class="background-description"></p>
+            </div>
+
+            <div class="action-row edit-actions">
+              <button id="composeBackgroundBtn" class="primary-btn" type="button">&#29983;&#25104;&#26657;&#22253;&#32972;&#26223;&#22270;</button>
+            </div>
           </div>
         </div>
 
         <div class="panel flow-panel result-panel">
-          <div class="panel-head">
+          <div class="panel-head result-panel-head">
             <div>
               <p class="panel-kicker">Step 3</p>
-              <h2>头像结果预览</h2>
-              <p class="panel-desc">生成结果会优先保持头像构图完整、人物主体清晰，适合社交头像与角色展示。</p>
+              <h2>&#22836;&#20687;&#32467;&#26524;&#39044;&#35272;</h2>
+              <p class="panel-desc">&#29983;&#25104;&#12289;&#20462;&#25913;&#25110;&#32972;&#26223;&#21512;&#25104;&#30340;&#32467;&#26524;&#37117;&#20250;&#26174;&#31034;&#22312;&#19979;&#26041;&#12290;</p>
             </div>
+            <button id="downloadImageBtn" class="ghost-btn" type="button" disabled>&#19979;&#36733;&#22270;&#29255;</button>
           </div>
 
           <div class="image-block">
+            <div class="result-meta-strip">
+              <div class="result-meta-card">
+                <span class="result-meta-label">&#24403;&#21069;&#32467;&#26524;&#26469;&#28304;</span>
+                <strong id="resultSourceLabel">&#23578;&#26410;&#29983;&#25104;</strong>
+              </div>
+              <div class="result-meta-card">
+                <span class="result-meta-label">&#19978;&#19968;&#27493;&#25805;&#20316;</span>
+                <strong id="resultActionLabel">&#31561;&#24453;&#29983;&#25104;</strong>
+              </div>
+            </div>
             <img id="resultImage" alt="generated result" />
             <p id="resultNote" class="result-note"></p>
           </div>

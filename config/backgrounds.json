@@ -1,0 +1,83 @@
+[
+  {
+    "id": "xjtlu",
+    "labelZh": "西交利物浦大学",
+    "backgrounds": [
+      {
+        "id": "xjtlu_front",
+        "labelZh": "图书馆正门区域",
+        "imageUrl": "/static/backgrounds/xjtlu/front.jpeg",
+        "file": "backgrounds/xjtlu/front.jpeg",
+        "descriptionZh": "更适合站姿或校门口风格的人物展示"
+      },
+      {
+        "id": "xjtlu_inter",
+        "labelZh": "馆内过道",
+        "imageUrl": "/static/backgrounds/xjtlu/inter.jpeg",
+        "file": "backgrounds/xjtlu/inter.jpeg",
+        "descriptionZh": "适合半身人物，背景更简洁"
+      },
+      {
+        "id": "xjtlu_reading",
+        "labelZh": "阅读区",
+        "imageUrl": "/static/backgrounds/xjtlu/reading.png",
+        "file": "backgrounds/xjtlu/reading.png",
+        "descriptionZh": "适合清新校园或安静阅读氛围"
+      }
+    ]
+  },
+  {
+    "id": "tsinghua",
+    "labelZh": "清华大学",
+    "backgrounds": [
+      {
+        "id": "tsinghua_front",
+        "labelZh": "图书馆入口",
+        "imageUrl": "/static/backgrounds/tsinghua/front.jpg",
+        "file": "backgrounds/tsinghua/front.jpg",
+        "descriptionZh": "适合人物居中或站姿展示"
+      },
+      {
+        "id": "tsinghua_inter",
+        "labelZh": "馆内区域",
+        "imageUrl": "/static/backgrounds/tsinghua/inter.jpg",
+        "file": "backgrounds/tsinghua/inter.jpg",
+        "descriptionZh": "适合更自然的校园场景合成"
+      },
+      {
+        "id": "tsinghua_reading",
+        "labelZh": "阅读区",
+        "imageUrl": "/static/backgrounds/tsinghua/reading.jpeg",
+        "file": "backgrounds/tsinghua/reading.jpeg",
+        "descriptionZh": "适合文静气质或学习氛围人物"
+      }
+    ]
+  },
+  {
+    "id": "fudan",
+    "labelZh": "复旦大学",
+    "backgrounds": [
+      {
+        "id": "fudan_front",
+        "labelZh": "入口区域",
+        "imageUrl": "/static/backgrounds/fudan/front.jpg",
+        "file": "backgrounds/fudan/front.jpg",
+        "descriptionZh": "入口空间更开阔，适合人物站姿"
+      },
+      {
+        "id": "fudan_inter",
+        "labelZh": "馆内中庭",
+        "imageUrl": "/static/backgrounds/fudan/inter.png",
+        "file": "backgrounds/fudan/inter.png",
+        "descriptionZh": "适合较正式的校园展示图"
+      },
+      {
+        "id": "fudan_reading",
+        "labelZh": "阅读区",
+        "imageUrl": "/static/backgrounds/fudan/reading.jpg",
+        "file": "backgrounds/fudan/reading.jpg",
+        "descriptionZh": "暖色调阅读空间，更适合头像展示"
+      }
+    ]
+  }
+]

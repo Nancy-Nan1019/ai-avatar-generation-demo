@@ -357,25 +357,29 @@
 
 ### 10.3 基于当前 Prompt 管线的标准案例对比
 
-#### 案例 A：古风仙侠头像
+除了上面的 Provider 直测结果，项目还基于当前主站 Prompt 管线设计了标准化测试案例，用于更稳定地比较不同模型对同一类人物设定的响应差异。
 
-Krea：
+当前仓库中的标准案例主要包括：
 
-![Xianxia Krea](./prompt_test/outputs/xianxia_avatar_krea.png)
+- 古风仙侠头像
+- 校园人物头像
 
-Tongyi：
+这类案例的特点是：
 
-![Xianxia Tongyi](./prompt_test/outputs/xianxia_avatar_tongyi.png)
+- 使用主站当前的中文标签配置与 Prompt 组装逻辑
+- 通过 `prompt_test/` 下的脚本生成统一或接近统一的 Prompt 结构
+- 分别对 `krea/Krea-2-Turbo` 与 `Tongyi-MAI/Z-Image-Turbo` 做对比测试
 
-#### 案例 B：校园男生头像
+观察重点主要包括：
 
-Krea：
+- 人物主体质量
+- Prompt adherence
+- 复杂风格表达能力
+- 构图稳定性
+- 头像场景下的可用程度
 
-![Campus Boy Krea](./prompt_test/outputs/campus_boy_avatar_krea.png)
-
-Tongyi：
-
-![Campus Boy Tongyi](./prompt_test/outputs/campus_boy_avatar_tongyi.png)
+从当前实验结论来看，Krea / Tongyi 这类远端高质量模型在人物完成度、风格表现和整体观感上，整体优于本地轻量路线 `segmind/small-sd`。  
+`prompt_test/` 目录中的脚本与输出元数据仍然保留，可继续作为后续模型选型和 Prompt 调整的基准测试入口。
 
 ## 11. 图像编辑实验
 
@@ -410,24 +414,21 @@ Tongyi：
 
 用于验证“已有图 -> 根据指令继续修改”的路线。
 
-#### 编辑前
-
-![Edit Before](./prompt_test/outputs/xianxia_avatar_krea.png)
-
-#### 编辑后
-
-![Edit After](./prompt_test/outputs/xianxia_avatar_krea_xianxia_avatar_flux2_edit.png)
-
-#### 背景修改后的延伸结果
-
-![Watertown Result](./prompt_test/outputs/xianxia_avatar_krea_watertown.png)
-
-![Watertown Flux Edit](./prompt_test/outputs/xianxia_avatar_krea_watertown_xianxia_avatar_flux2_edit.png)
-
 说明：
 
-- 这一组结果用于说明编辑链路可行
-- 不代表已经沉淀成可稳定本地部署的最终模型方案
+- 当前前端已经支持基于当前结果继续编辑
+- 也支持上传已有图片后再编辑
+- 编辑模式包括人物形象、风格气质和背景方向三个维度
+- `prompt_test/flux2_edit_test.py` 的主要目标是验证 image-to-image 路线是否可行
+- 测试重点包括：
+  - 人物主体保持
+  - 局部风格修改
+  - 背景方向修改
+  - 结构化 Edit Prompt 的组织方式
+- 仓库中也保留了 Watertown 相关实验结果与元数据文件，可作为“背景方向编辑案例”的参考
+- 当前实验说明这条路线是可行的
+- 但高质量 Edit 结果仍明显依赖远端模型能力与 Provider 资源
+- 它不代表已经形成稳定、低成本、可本地长期部署的最终方案
 
 ## 12. 本地运行方式
 
